@@ -29,7 +29,6 @@ public class ProductsServiceImpl implements ProductsService {
             products.setNameProducts(nameProducts);
        productsDao.edit(products);
 
-
     }
 
     public void delete(int id_Products) {
