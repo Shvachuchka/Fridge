@@ -38,14 +38,15 @@ public class PeopleServiceImpl implements PeopleService {
         peopleDao.delete(people);
     }
 
+    public void add(People people) {
+        peopleDao.add(people);
+    }
 
     public People findOne(int id_People) {
         return peopleDao.findOne(id_People);
     }
 
-public void add(People people){
-    peopleDao.add(people);
-}
+
 
 
     public List<People> findAll() {

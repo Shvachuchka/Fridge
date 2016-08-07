@@ -11,9 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-<div style="height: 60%; background-color: #e0e0e0; padding: 20px;">
+<div style="height: 80%; background-color: rgba(210, 105, 30, 0.55); padding: 20px">
 <h1 style="text-align: center">Hello, World!!!</h1>
-<p style="clear: both"><a href="/people/all"> All People </a></p>
-    </div>
-</body>
-</html>
+
+ <p style="clear: both; text-align: center"><a href="/people/all"> All People </a></p>
+</div>
+ </body>
+ </html>

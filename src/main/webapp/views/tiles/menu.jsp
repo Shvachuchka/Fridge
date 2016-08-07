@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div style="height: 150px; background-color: rgba(207, 186, 230, 0.42);  border-color: #9e9df9 ">
+<div style="height: 150px; background-color: rgba(207, 186, 230, 0.42); border: 3px black ; padding: 20px">
     <h1 style="text-align: center; padding: 10px">menu</h1>
 </div>
 

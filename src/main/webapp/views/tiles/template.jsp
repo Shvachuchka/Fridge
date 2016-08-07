@@ -9,6 +9,6 @@
     <header><tiles:insertAttribute name="header"/></header>
     <div><tiles:insertAttribute name="menu"/></div>
     <div><tiles:insertAttribute name="body"/></div>
-    <footer><tiles:insertAttribute name="footer"/></footer>
+    <footer style="clear:both"><tiles:insertAttribute name="footer"/></footer>
 </body>
 </html>

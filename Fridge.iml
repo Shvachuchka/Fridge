@@ -19,7 +19,6 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servlet.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/beans.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -27,9 +26,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
-        <datasource-mapping>
-          <factory-entry name="Main" value="353ec0ff-5636-4283-9a86-1d3abf63fe60" />
-        </datasource-mapping>
+        <datasource-mapping />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
