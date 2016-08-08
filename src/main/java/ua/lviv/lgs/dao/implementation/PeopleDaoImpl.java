@@ -23,12 +23,14 @@ private EntityManager entityManager;
 
     @Transactional
     public void edit(People people) {
-    entityManager.merge(people);
+
+        entityManager.merge(people);
     }
 
     @Transactional
     public void delete(People people) {
-    entityManager.remove(people);
+
+        entityManager.remove(entityManager.contains(people)? people: entityManager.merge(people));
     }
 
     @Transactional

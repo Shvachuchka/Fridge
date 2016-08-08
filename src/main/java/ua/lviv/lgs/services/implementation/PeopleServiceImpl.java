@@ -23,15 +23,9 @@ public class PeopleServiceImpl implements PeopleService {
         peopleDao.add(people);
     }
 
-    public void edit(int id_People, String namePeople, String surname, String password, String passwordConfirm) {
-        People people = peopleDao.findOne(id_People);
-        if ( namePeople != null)
-            people.setNamePeople(namePeople );
-        if (surname != null)
-            people.setSurname(surname);
-        peopleDao.edit(people);
-    }
-
+   public void edit(People people){
+       peopleDao.edit(people);
+   }
 
     public void delete(int id_People) {
         People people = peopleDao.findOne(id_People);

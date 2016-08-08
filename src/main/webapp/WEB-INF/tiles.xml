@@ -25,6 +25,10 @@
         <put-attribute name="body" value="/views/people/page.jsp"/>
     </definition>
 
+    <definition name="peopleEdit" extends="base.definition">
+        <put-attribute name="body" value="/views/people/edit.jsp"/>
+    </definition>
+
 
     <definition name="*-*-*" extends="base.definition">
         <put-attribute name="body" value="/{1}/{2}/{3}.jsp"/>

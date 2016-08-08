@@ -1,11 +1,12 @@
 package ua.lviv.lgs.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.lgs.entity.People;
 import ua.lviv.lgs.services.PeopleService;
-
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -29,7 +30,7 @@ public class PeopleController {
 
       @RequestMapping(value = "/people/create", method = RequestMethod.POST)
     public String createPeople(@ModelAttribute People people){
-        peopleService.add(people);
+        peopleService.addOrEdit(people);
         return "redirect:/people/all";
     }
 
@@ -39,6 +40,39 @@ public class PeopleController {
                 model.addAttribute("people",people);
               return "peoplePage";
     }
+
+     @RequestMapping(value = "/people/edit/{id}", method = RequestMethod.GET)
+         public String edit(@PathVariable String id, Model model){
+             model.addAttribute("people", peopleService.findOne(Integer.parseInt(id)));
+         return "peopleEdit";
+           }
+
+    @RequestMapping(value = "/people/edit", method = RequestMethod.POST)
+      public String edit(@ModelAttribute People people){
+               peopleService.addOrEdit(people);
+              return "redirect:/people/page"+String.valueOf(people.getId_People());
+           }
+
+    @RequestMapping(value = "/people/delete/{id}", method = RequestMethod.POST)
+       public String delete(@PathVariable String id){
+              peopleService.delete(Integer.parseInt(id));
+               return "redirect:/people/all";
+          }
+
+    public String registration(@ModelAttribute People people){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        people.setPassword(bCryptPasswordEncoder.encode(people.getPassword()));
+        peopleService.add(people);
+        peopleService.addOrEdit(people);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
+    public String cabinet(Principal principal, Model model){
+        model.addAttribute("people", peopleService.findOne(Integer.parseInt(principal.getName())));
+       return "cabinet";
+    }
+
 
 
 

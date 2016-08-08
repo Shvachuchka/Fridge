@@ -18,7 +18,7 @@ public class People {
     @Transient
     private String passwordConfirm;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Refrigerator refrigerator;
 
     public People(){
