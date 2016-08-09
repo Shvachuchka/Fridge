@@ -9,26 +9,6 @@
         <put-attribute name="footer" value="/views/tiles/footer.jsp"/>
     </definition>
 
-    <definition name="home" extends="base.definition">
-        <put-attribute name="body" value="/views/base/home.jsp"/>
-    </definition>
-
-    <definition name="peopleAll" extends="base.definition">
-        <put-attribute name="body" value="/views/people/All.jsp"/>
-    </definition>
-
-    <definition name="peopleNew" extends="base.definition">
-        <put-attribute name="body" value="/views/people/New.jsp"/>
-    </definition>
-
-    <definition name="peoplePage" extends="base.definition">
-        <put-attribute name="body" value="/views/people/page.jsp"/>
-    </definition>
-
-    <definition name="peopleEdit" extends="base.definition">
-        <put-attribute name="body" value="/views/people/edit.jsp"/>
-    </definition>
-
 
     <definition name="*-*-*" extends="base.definition">
         <put-attribute name="body" value="/{1}/{2}/{3}.jsp"/>

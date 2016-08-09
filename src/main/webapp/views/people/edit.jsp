@@ -3,9 +3,10 @@
 
 
 <form:form action="/people/edit" method="post" modelAttribute="people">
-        <form:hidden path="id_People" value="${people.id_People}"/>
-        <form:input path="namePeople" value="${people.namePeople}"/>
-        <form:input path="surname" value="${people.surname}"/>
-        <form:input path="password" value="${people.password}"/>
-       <form:button>Модифікувати</form:button>
+
+    <form:hidden path="id_People"/>
+    <form:input path="namePeople"/>
+    <form:input path="surname"/>
+    <form:button>Модифікувати</form:button>
+
 </form:form>

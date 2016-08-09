@@ -5,15 +5,9 @@
 <head>
     <title>Title</title>
 </head>
+<body>
 <div>
 
-    <!--<form method="post" action="/people/create">
-        <input type="text" name="namePeople">
-        <input type="text" name="surname">
-        <input type="password" name="password">
-
-        <button type="submit">Add New People</button>
-    </form>  -->
 
     <form:form action="/people/create" method="post" modelAttribute="people">
         <form:label path="namePeople"> Name:</form:label>

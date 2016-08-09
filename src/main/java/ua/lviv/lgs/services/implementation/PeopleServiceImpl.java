@@ -1,49 +1,52 @@
 package ua.lviv.lgs.services.implementation;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.peopledetails.PeopleDetails;
+import org.springframework.security.core.peopledetails.PeopleDetailsService;
 import org.springframework.stereotype.Service;
-import ua.lviv.lgs.dao.PeopleDao;
 import ua.lviv.lgs.entity.People;
+import ua.lviv.lgs.repository.PeopleRepo;
 import ua.lviv.lgs.services.PeopleService;
-
+import javax.persistence.NoResultException;
+import java.nio.file.attribute.PeoplePrincipalNotFoundException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
-public class PeopleServiceImpl implements PeopleService {
+public class PeopleServiceImpl implements PeopleService, PeopleDetailsService {
 
     @Autowired
-    private PeopleDao peopleDao;
+    private PeopleRepo peopleRepo;
 
-    public void add(String namePeople, String surname, String password) {
-        People people = new People();
-        people.setNamePeople(namePeople);
-        people.setSurname(surname);
-        people.setPassword(password);
+    public PeopleDetails loadPeopleByPeoplename(String login) throws PeoplePrincipalNotFoundException{
+        People people;
 
-        peopleDao.add(people);
+        try {
+          people=peopleRepo.findByLogin(login);
+        } catch (NoResultException e) {
+            return null;
+        }
+        Collection<SimpleGrantedAuthority>authorities = new ArrayList<SimpleGrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        return new org.springframework.security.core.peopledetails.People(String.valueOf(people.getId_People()), people.getPassword(),authorities);
     }
 
-   public void edit(People people){
-       peopleDao.edit(people);
-   }
+    public void addOrEdit(People people) {
+        peopleRepo.save(people);
+    }
 
     public void delete(int id_People) {
-        People people = peopleDao.findOne(id_People);
-        peopleDao.delete(people);
-    }
-
-    public void add(People people) {
-        peopleDao.add(people);
+        peopleRepo.delete(id_People);
     }
 
     public People findOne(int id_People) {
-        return peopleDao.findOne(id_People);
+        return peopleRepo.findOne(id_People);
     }
-
-
-
 
     public List<People> findAll() {
-        return peopleDao.findAll();
+        return peopleRepo.findAll();
     }
 }
+
+

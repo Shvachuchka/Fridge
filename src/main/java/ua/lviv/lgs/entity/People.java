@@ -17,18 +17,42 @@ public class People {
     private String password;
     @Transient
     private String passwordConfirm;
+    @Column
+    private String email;
+    @Column
+    private String phone;
+    @Column
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Refrigerator refrigerator;
 
-    public People(){
-    }
 
     public People(String password, String passwordConfirm) {
         this.password = password;
         this.passwordConfirm = passwordConfirm;
     }
 
+
+    public People(){
+
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public People(int id_People, String namePeople, String surname) {
         this.id_People = id_People;
@@ -92,6 +116,8 @@ public class People {
                 ", surname='" + surname + '\'' +
                 ", password='" + password + '\'' +
                 ", passwordConfirm='" + passwordConfirm + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 ", refrigerator=" + refrigerator +
                 '}';
     }

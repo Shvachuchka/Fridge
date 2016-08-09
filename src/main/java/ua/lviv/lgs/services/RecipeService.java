@@ -9,9 +9,8 @@ import java.util.List;
  */
 public interface RecipeService {
 
-    void add(String nameRecipe, String categoryRecipe, int time_cooking, int number_products);
-    void edit(int id_Recipe, String nameRecipe, String categoryRecipe, int time_cooking, int number_products);
-    void delete(int id_Recipe);
+   void addOrEdit(Recipe recipe);
+   void delete(int id_Recipe);
     Recipe findOne(int id_Recipe);
     List<Recipe> findAll();
 }

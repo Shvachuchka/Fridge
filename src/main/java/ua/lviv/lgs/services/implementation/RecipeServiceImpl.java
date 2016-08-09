@@ -3,49 +3,34 @@ package ua.lviv.lgs.services.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.lviv.lgs.dao.RecipeDao;
 import ua.lviv.lgs.entity.Recipe;
+import ua.lviv.lgs.repository.RecipeRepo;
 import ua.lviv.lgs.services.RecipeService;
 
 import java.util.List;
 
 @Service
-public class RecipeServiceImpl implements RecipeService{
+public class RecipeServiceImpl implements RecipeService {
 
     @Autowired
-    private RecipeDao recipeDao;
+    private RecipeRepo recipeRepo;
 
-    public void add(String nameRecipe, String categoryRecipe, int time_cooking, int number_products) {
-        Recipe recipe = new Recipe();
-        recipe.setNameRecipe(nameRecipe);
-        recipe.setCategoryRecipe(categoryRecipe);
-        recipe.setTime_cooking(time_cooking);
-        recipe.setNumber_products(number_products);
-        recipeDao.add(recipe);
-
-    }
-
-    public void edit(int id_Recipe, String nameRecipe, String categoryRecipe, int time_cooking, int number_products) {
-        Recipe recipe = recipeDao.findOne(id_Recipe);
-        if (nameRecipe != null)
-            recipe.setNameRecipe(nameRecipe);
-        if (categoryRecipe != null)
-            recipe.setCategoryRecipe(categoryRecipe);
-       recipeDao.edit(recipe);
-
+    public void addOrEdit(Recipe recipe) {
+        recipeRepo.save(recipe);
     }
 
     public void delete(int id_Recipe) {
-        Recipe recipe = recipeDao.findOne(id_Recipe);
-        recipeDao.delete(recipe);
-
+        recipeRepo.delete(id_Recipe);
     }
 
     public Recipe findOne(int id_Recipe) {
-        return recipeDao.findOne(id_Recipe);
+        return recipeRepo.findOne(id_Recipe);
     }
 
     public List<Recipe> findAll() {
-        return recipeDao.findAll();
+        return recipeRepo.findAll();
     }
 }
+
+
+

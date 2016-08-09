@@ -16,7 +16,13 @@ public class BaseController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home (){
-        return "home";
+
+        return "views-base-home";
+    }
+
+    @RequestMapping(value = "/loginpage", method = RequestMethod.GET)
+    public String login(){
+         return "views-base-login";
     }
 
 
