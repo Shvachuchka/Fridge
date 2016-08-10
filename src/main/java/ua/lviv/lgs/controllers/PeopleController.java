@@ -80,13 +80,14 @@ public class PeopleController {
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             people.setPassword(bCryptPasswordEncoder.encode(people.getPassword()));
             peopleService.addOrEdit(people);
+            return "redirect:/";
         }
 
-   // @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
-    //    public String cabinet (Principal principal, Model model){
-    //        model.addAttribute("people", peopleService.findOne(Integer.parseInt(principal.getName())));
-    //        return "views-base-cabinet";
-    //    }
+        // @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
+        //    public String cabinet (Principal principal, Model model){
+        //        model.addAttribute("people", peopleService.findOne(Integer.parseInt(principal.getName())));
+        //        return "views-base-cabinet";
+        //    }
 
     }
 }
