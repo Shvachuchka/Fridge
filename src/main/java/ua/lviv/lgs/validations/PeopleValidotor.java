@@ -1,6 +1,5 @@
 package ua.lviv.lgs.validations;
 
-import org.dom4j.rule.Pattern;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -8,6 +7,7 @@ import org.springframework.validation.Validator;
 import ua.lviv.lgs.entity.People;
 
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class PeopleValidotor implements Validator{
@@ -42,7 +42,7 @@ public class PeopleValidotor implements Validator{
 
     Matcher matcher;
 
-        if(!(matcher=pattern.matches(people.getEmail())).matches()){
+        if(!(matcher=pattern.matcher(people.getEmail())).matches()){
           errors.rejectValue("email", "bad.email");
            }
      }
